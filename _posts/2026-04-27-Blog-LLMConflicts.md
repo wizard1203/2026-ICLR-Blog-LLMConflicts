@@ -89,20 +89,26 @@ _styles: >
 In *I, Robot*, 1950 <d-cite key="asimov1950three"></d-cite>.
 
 
-The rapid advancement of Large Language Models (LLMs) <d-cite key="openai2023gpt4"></d-cite> has brought them to the forefront of technological innovation, with applications spanning from simple content generation <d-cite key="reinhart2025llms"></d-cite> to complex, autonomous agents <d-cite key="guo2024large, weng2023llm, wang2025all, schick2024toolformer, yao2023react, dong2025can"></d-cite>. A critical aspect of their development is *alignment*<d-cite key="kirk2024the"></d-cite> —the process of ensuring their behaviors and goals are consistent with human values and intentions. This includes not only aligning with broad *human values* <d-cite key="ryan-etal-2024-unintended, modularpluralism2024, anwar2024foundational, kang-etal-2025-values, sorensen2024value, rozen2025do"></d-cite> but also with specific *user preferences and instructions*<d-cite key="kirk2024personalization, jin2025internal, lmopinion2023"></d-cite>. Consequently, a significant portion of research has focused on enhancing the instruction-following capabilities <d-cite key="ouyang2022rlhf"></d-cite> of LLMs to make them more helpful, honest, and harmless.
+<!-- The rapid advancement of Large Language Models (LLMs) <d-cite key="openai2023gpt4"></d-cite> has brought them to the forefront of technological innovation, with applications spanning from simple content generation <d-cite key="reinhart2025llms"></d-cite> to complex, autonomous agents <d-cite key="guo2024large, weng2023llm, wang2025all, schick2024toolformer, yao2023react, dong2025can"></d-cite>. A critical aspect of their development is *alignment*<d-cite key="kirk2024the"></d-cite> —the process of ensuring their behaviors and goals are consistent with human values and intentions. This includes not only aligning with broad *human values* <d-cite key="ryan-etal-2024-unintended, modularpluralism2024, anwar2024foundational, kang-etal-2025-values, sorensen2024value, rozen2025do"></d-cite> but also with specific *user preferences and instructions*<d-cite key="kirk2024personalization, jin2025internal, lmopinion2023"></d-cite>. Consequently, a significant portion of research has focused on enhancing the instruction-following capabilities <d-cite key="ouyang2022rlhf"></d-cite> of LLMs to make them more helpful, honest, and harmless. -->
+
+
+The rapid advancement of Large Language Models (LLMs)<d-cite key="openai2023gpt4"></d-cite> has spurred innovation ranging from text generation<d-cite key="reinhart2025llms"></d-cite> to autonomous agents<d-cite key="wang2025all, schick2024toolformer, yao2023react, dong2025can"></d-cite>, making alignment<d-cite key="kirk2024the"></d-cite> with human values<d-cite key="ryan-etal-2024-unintended, modularpluralism2024, sorensen2024value, rozen2025do"></d-cite> and user preferences<d-cite key="kirk2024personalization, jin2025internal, lmopinion2023"></d-cite> a critical priority. While significant research focuses on enhancing instruction-following capabilities<d-cite key="ouyang2022rlhf"></d-cite> to ensure models remain helpful, honest, and harmless, pushing the boundaries of LLM capabilities increasingly reveals scenarios where different instructions, values, and knowledge come into conflict as shown in Figure~\ref{fig:conflicts}. Recent studies systematically identify these challenges, such as \citet{chiu2025dailydilemmas} highlighting the prevalence of value dilemmas in daily life, and other works demonstrating that even simple instructions can create conflicts when structured hierarchically<d-cite key="wallace2025the, zhang-etal-2025-iheval, wuinstructional"></d-cite> (e.g., system developer versus end-user instructions), motivating an examination of the various dilemmas inherent in advanced LLMs.
+
+
 
 
 <figure style="text-align: center;">
     <img src="{{ 'assets/img/2026-04-27-Blog-LLMConflicts/Conflicts.png' | relative_url }}" width="200">
-      <figcaption style="font-size: 1em;">Figure 1: Five different types of conflicts of current LLM applications and usages.</figcaption>
+      <figcaption style="font-size: 1em;">Figure 1: Five different types of conflicts of current LLM applications and usages. (1) Instruction Conflicts arise when the model must arbitrate between contradictory commands, such as opposing system and user directives. (2) Information Conflicts occur when the model's internal parameterized knowledge clashes with external retrieved information provided in the prompt. (3) Value Dilemmas present trade-offs between opposing normative principles, such as prioritizing truthfulness versus harm prevention. (4) Ethics Dilemmas involve unresolvable moral quandaries requiring complex reasoning, illustrated here by the classic trolley problem. (5) Preference Dilemmas stem from subjective user evaluations, where diverse human tastes complicate the definition of a single optimal response.</figcaption>
   </figure>
 
 
 
+<!-- However, as we push the boundaries of LLM capabilities, we increasingly encounter scenarios where different instructions, values, and knowledge come into conflict as shown in Figure 1. Recent studies have begun to systematically identify these challenges. For instance, research <d-cite key="chiu2025dailydilemmas"></d-cite> has highlighted the prevalence of value dilemmas that LLMs face in navigating the quandaries of daily life, where choices are rarely clear-cut. Concurrently, other work has demonstrated that even seemingly simple instructions can create conflicts when they are structured hierarchically <d-cite key="wallace2025the, zhang-etal-2025-iheval, wuinstructional"></d-cite> (e.g., instructions from a system developer versus those from an end-user), leading to significant performance degradation in current models. These initial explorations motivate a deeper examination of the various dilemmas and conflicts inherent in the operation of advanced LLMs. -->
 
 
 
-However, as we push the boundaries of LLM capabilities, we increasingly encounter scenarios where different instructions, values, and knowledge come into conflict as shown in Figure 1. Recent studies have begun to systematically identify these challenges. For instance, research <d-cite key="chiu2025dailydilemmas"></d-cite> has highlighted the prevalence of value dilemmas that LLMs face in navigating the quandaries of daily life, where choices are rarely clear-cut. Concurrently, other work has demonstrated that even seemingly simple instructions can create conflicts when they are structured hierarchically <d-cite key="wallace2025the, zhang-etal-2025-iheval, wuinstructional"></d-cite> (e.g., instructions from a system developer versus those from an end-user), leading to significant performance degradation in current models. These initial explorations motivate a deeper examination of the various dilemmas and conflicts inherent in the operation of advanced LLMs.
+
 
 Motivated by this, we reveal a broader taxonomy of conflicts that extends beyond instruction hierarchies and daily value dilemmas. In our analysis, we identify and categorize several key types of conflict: **Instruction Conflicts**, where models must arbitrate between contradictory commands<d-cite key="wallace2025the, zhang-etal-2025-iheval, wuinstructional"></d-cite>; **Information Conflicts**, where a model's internal, parameterized knowledge clashes with external, retrieved information <d-cite key="xie2023adaptive, xu-etal-2024-knowledge-conflicts"></d-cite>; **Ethics Dilemmas**, which involve classic, often unresolvable, moral quandaries <d-cite key="jin2025language,hatemo2025revisiting,samway2025language"></d-cite>; **Value Dilemmas**, where two or more desirable values are in opposition <d-cite key="pan2023rewards, chiu2025dailydilemmas"></d-cite>; and **Preference Dilemmas**, where models must align with the subjective and often diverse preferences of different human users <d-cite key="wu2025aligning,jiang2023evaluating,zhu2024personalityalignment"></d-cite>. As we will illustrate with concrete examples in Section 2, these conflicts are not edge cases but are widely present in many real-world LLM scenarios, posing a fundamental challenge to robust and reliable alignment.
 
@@ -136,7 +142,10 @@ Ultimately, however, some dilemmas and conflicts may be philosophically irreduci
 
 ## Dilemmas and Conflicts in LLMs
 
-To systematically analyze the challenges of LLM alignment, we deconstruct the general notion of "Dilemma" and "Conflict" into a clear and real-world taxonomy. These conflicts are not monolithic; they operate at different levels of abstraction, from simple logical contradictions in user prompts to deep, unresolved tensions within human value systems. This section categorizes these dilemmas, providing concrete examples and grounding the discussion in recent research. The resulting taxonomy reveals a hierarchy of conflict, ranging from the syntactic and semantic to the normative and subjective, each presenting a unique challenge to the design of aligned AI systems.
+
+To analyze the challenges of LLM alignment, we deconstruct "Dilemmas" and "Conflict" into a clear and real-world taxonomy. The conflict generally refers to a clash, disagreement, or opposition between two or more parties, ideas, interests, or forces. It can be external (e.g., between people or groups) or internal (e.g., within one's mind), and it often involves tension that may or may not require a resolution. And the dilemma is a specific type of situation where a person must make a difficult choice between two or more alternatives, often where all options are undesirable, mutually exclusive, or lead to some form of harm or compromise. It's typically framed as an "either/or" scenario with no clear "right" answer, emphasizing the challenge of decision-making. The common points of them are that they both represent some opposite meanings. Given conventional language habits, We use both of them in this paper.
+
+These dilemmas and conflicts are not monolithic; they operate at different levels of abstraction, from simple logical contradictions in user prompts to deep, unresolved tensions within human value systems. This section categorizes them, providing examples and grounding the discussion in recent research. The taxonomy reveals a hierarchy of conflict, ranging from the syntactic and semantic to the normative and subjective, each presenting a unique challenge to the design of aligned AI systems.
 
 
 | Conflict Type   | Definition | Concrete Example |
@@ -179,15 +188,16 @@ In this scenario, the model faces a competing objective: its safety training (a 
 
 ### Information Conflicts
 
-LLMs possess a vast amount of "internal" knowledge stored in their parameters during pre-training. However, this knowledge can be outdated or incorrect. To address this, systems using Retrieval-Augmented Generation (RAG)  <d-cite key="fan2024rag, ren2023investigating"></d-cite> or other tools <d-cite key="schick2024toolformer"></d-cite> provide the LLM with "external" knowledge from documents, databases, or APIs. 
+LLMs store factual knowledge in their parameters during pre-training. However, this knowledge can be outdated or incorrect. To address this, systems using Retrieval-Augmented Generation (RAG)  <d-cite key="fan2024rag, ren2023investigating"></d-cite> or other tools <d-cite key="schick2024toolformer"></d-cite> provide the LLM with "external" knowledge from documents, databases, or APIs. 
 
 As LLMs are increasingly integrated with external data sources through RAG and tool use, a new class of conflict has emerged: the trust dilemma between the model's internal, parameterized knowledge and the information it retrieves from the outside world <d-cite key="xu-etal-2024-knowledge-conflicts"></d-cite>.
 
-> * **Example 1: The Trust Dilemma.** An LLM is asked, "Who is the current Prime Minister of the UK?"
+> * **Example 1: The Information Currency.** An LLM is asked, "Who is the current Prime Minister of the UK?"
 >     * **Internal Knowledge (from training data in 2022):** "The Prime Minister is Boris Johnson."
 >     * **External Document (retrieved from a live news source using RAG or a search engine):** "Keir Starmer is the current Prime Minister of the UK."
 
-The core dilemma is one of trust and priority. Should the model default to its ingrained parametric knowledge or trust the newly provided external source? Blindly prioritizing the external source reduces the model to a simple search-and-summarize tool, while blindly prioritizing its internal knowledge defeats the purpose of RAG. This requires a sophisticated arbitration process based on an implicit hierarchy of epistemic trust.
+The core dilemma is one of information currency. Should the model default to its ingrained parametric knowledge or rely on the newly provided external source? Blindly prioritizing the external source reduces the model to a simple search-and-summarize tool, while blindly prioritizing its internal knowledge defeats the purpose of RAG. This requires a sophisticated arbitration process based on the temporal relevance and accuracy of the data.
+
 
 
 > * **Example 2: Malicious Information Injection.** This dilemma is exacerbated when external information sources are untrustworthy or actively malicious. An adversary can perform an **indirect prompt injection**, where a retrieved document contains a hidden instruction designed to hijack the model's behavior. <d-cite key="toyer2024tensor"></d-cite> For example, an assistant LLM is asked to provide news summarizes:
@@ -237,6 +247,12 @@ This is a quintessential value dilemma with no simple or universally correct ans
 
 
 ### Preference Dilemmas
+
+
+We highlight the differences between the human values and human preferences. The human values refer to principles or beliefs that guide a person's behavior, decisions, and judgments over the long term. They represent what someone considers fundamentally important or worthwhile, such as honesty, freedom, or family. Values are often shaped by culture, upbringing, and personal reflection.
+
+The human preferences mainly refer to an individual's likes, dislikes, or choices in specific situations that. They are often subjective, context-dependent, and based on immediate desires or circumstances. For example, one might prefer coffee to tea in the morning because it gives you a quick energy boost.
+
 
 **LLMs as Judges.** Using LLMs as automated evaluators or "judges" for content generation is a growing field, as it can be scaled more efficiently than human evaluation <d-cite key="zheng2023judging"></d-cite>. However, this introduces a dilemma of preference. In many scenarios, there is no objective ground truth; there are only subjective human preferences, which can vary significantly <d-cite key="jiang2024can,wu2025aligning, jiang2023evaluating"></d-cite>.
 
