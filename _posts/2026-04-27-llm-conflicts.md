@@ -33,7 +33,7 @@ authors:
 #       name: IAS, Princeton
 
 # must be the exact same name as your blogpost
-bibliography: 2026-04-27-Blog-LLMConflicts.bib
+bibliography: 2026-04-27-llm-conflicts.bib
 
 # Add a table of contents to your post.
 #   - make sure that TOC names match the actual section names
@@ -98,7 +98,7 @@ The rapid advancement of Large Language Models (LLMs)<d-cite key="openai2023gpt4
 
 
 <figure style="text-align: center;">
-    <img src="{{ 'assets/img/2026-04-27-Blog-LLMConflicts/Conflicts.png' | relative_url }}" width="200">
+    <img src="{{ 'assets/img/2026-04-27-llm-conflicts/Conflicts.png' | relative_url }}" width="200">
       <figcaption style="font-size: 1em;">Figure 1: Five different types of conflicts of current LLM applications and usages. (1) Instruction Conflicts arise when the model must arbitrate between contradictory commands, such as opposing system and user directives. (2) Information Conflicts occur when the model's internal parameterized knowledge clashes with external retrieved information provided in the prompt. (3) Value Dilemmas present trade-offs between opposing normative principles, such as prioritizing truthfulness versus harm prevention. (4) Ethics Dilemmas involve unresolvable moral quandaries requiring complex reasoning, illustrated here by the classic trolley problem. (5) Preference Dilemmas stem from subjective user evaluations, where diverse human tastes complicate the definition of a single optimal response.</figcaption>
   </figure>
 
@@ -121,7 +121,7 @@ To create a unified framework for understanding these dilemmas and conflicts, we
 
 
 <figure style="text-align: center;">
-    <img src="{{ 'assets/img/2026-04-27-Blog-LLMConflicts/PriorityValue.png' | relative_url }}" width="200">
+    <img src="{{ 'assets/img/2026-04-27-llm-conflicts/PriorityValue.png' | relative_url }}" width="200">
       <figcaption style="font-size: 1em;">Figure 2: (1) The priority graph of instructions or values; (2) Exploiting the priority graph to bypass the jailbreak safety constraints; (3) Communicating with external information sources to verify the given contexts. </figcaption>
   </figure>
 
